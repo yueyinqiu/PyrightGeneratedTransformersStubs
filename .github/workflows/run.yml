@@ -6,21 +6,13 @@ on:
 jobs:
     publish:
         runs-on: ubuntu-latest
-      
         permissions:
             contents: read
-
         steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
-
-            - name: Setup dotnet
-              uses: actions/setup-dotnet@v4
-
-            - name: Setup uv
-              uses: astral-sh/setup-uv@v5
-
-            - name: Run script
+            - uses: actions/checkout@v6.0.2
+            - uses: actions/setup-dotnet@v5.2.0
+            - uses: astral-sh/setup-uv@v8.1.0
+            - run: dotnet run script.cs
               env:
                 UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
-              run: dotnet run script.cs
+              
