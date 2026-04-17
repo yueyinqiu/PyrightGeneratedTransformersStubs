@@ -8,7 +8,7 @@ using CliWrap;
 var packageName = "csharp-like-file";
 
 Console.WriteLine("Creating generator environment...");
-var directory = new DirectoryInfo("generator");
+var directory = Directory.CreateDirectory("generator");
 directory.Delete(true);
 directory.Create();
 var uv = Cli.Wrap("uv").WithWorkingDirectory(directory.FullName);
@@ -33,7 +33,7 @@ await uv.WithArguments(["run", "pyright", "--createstub", packageName]).ExecuteA
 var generatedStubs = new DirectoryInfo(Path.Join(directory.FullName, "typings", packageName));
 
 Console.WriteLine("Creating package environment...");
-directory = new DirectoryInfo("package");
+directory = Directory.CreateDirectory("package");
 directory.Delete(true);
 directory.Create();
 uv = Cli.Wrap("uv").WithWorkingDirectory(directory.FullName);
