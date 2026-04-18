@@ -14,5 +14,7 @@ jobs:
             - uses: astral-sh/setup-uv@v8.1.0
             - run: dotnet run script.cs
               env:
+                PACKAGE_NAME: ${{ vars.PACKAGE_NAME }}
+                UV_PUBLISH_URL: ${{ vars.UV_PUBLISH_URL }}
                 UV_PUBLISH_TOKEN: ${{ secrets.UV_PUBLISH_TOKEN }}
               

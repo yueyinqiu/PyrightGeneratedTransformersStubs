@@ -3,9 +3,11 @@
 using System.Text;
 using CliWrap;
 
-// requires UV_PUBLISH_TOKEN
+// requires:
+// PACKAGE_NAME
+// UV_PUBLISH_TOKEN
 
-var packageName = "csharp-like-file";
+var packageName = Environment.GetEnvironmentVariable("PACKAGE_NAME") ?? "";
 
 Console.WriteLine("Creating generator environment...");
 var directory = Directory.CreateDirectory("generator");
